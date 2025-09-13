@@ -4,9 +4,8 @@ AI-powered fact-checking with optional real-time web research across multiple AI
 
 Version: 2.0.0
 
-- Chrome Web Store: [Link to Store Listing] (replace with your URL)
-- Documentation: This GitHub Wiki page
-- Screenshots: Add to the wiki Images section
+- Chrome Web Store: 
+- Documentation: 
 
 ---
 
