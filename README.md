@@ -4,8 +4,8 @@
   <img src="https://github.com/VasileiosMalt/FactForgeAI/blob/main/FFlogo.png?raw=true" alt="FactForge AI Logo" width="240"/>
 </p>
 
-**AI-powered fact-checking** with real-time web research across multiple AI providers.  
-Get a **Truth Score**, confidence level, synthesized evidence, and sources with credibility signals — right in your browser! 🚀  
+**AI-assisted fact-evaluation** with real-time web research across multiple AI providers.  
+Get a **Truth Score**, confidence level, synthesized evidence, and sources with credibility signals right in your browser! 🚀  
 
 **Version:** 2.0.0  
 - 🌐 Chrome Web Store:  
