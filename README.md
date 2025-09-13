@@ -166,9 +166,12 @@ Get a **Truth Score**, confidence level, synthesized evidence, and sources with 
 
 ## 🧾 Legal
 
-- For informational use only; not legal, medical, or financial advice  
-- Verify results via primary sources  
-- Respect Terms of Service (sites and APIs)  
+- FactForge AI is provided **for informational purposes only** and is **not legal, medical, or financial advice**.
+- **No warranties or guarantees**: Results are assisted by AI and public web data. Outputs may be incomplete, incorrect, out of date, or misleading.
+- **You are solely responsible** for verifying all outputs and for any decisions, actions, or consequences arising from your use of the extension.
+- The developer and contributors **disclaim all liability** for errors, omissions, or any losses or damages resulting from the use of this extension or reliance on its results.
+- **Respect all applicable laws** and third-party terms when following links, using APIs, and sharing results.
+- **By using FactForge AI, you acknowledge and accept that responsibility for verification and outcomes rests entirely with you.**
 
 ---
 
