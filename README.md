@@ -1,6 +1,8 @@
 # FactForge AI — Chrome Extension
 
-
+<p align="center">
+  <img src="https://github.com/VasileiosMalt/FactForgeAI/blob/main/FFlogo.png?raw=true" alt="FactForge AI Logo" width="120"/>
+</p>
 
 **AI-powered fact-checking** with real-time web research across multiple AI providers.  
 Get a **Truth Score**, confidence level, synthesized evidence, and sources with credibility signals — right in your browser! 🚀  
