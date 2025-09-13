@@ -1,4 +1,6 @@
-# 🧠 FactForge AI — Chrome Extension
+# FactForge AI — Chrome Extension
+
+
 
 **AI-powered fact-checking** with real-time web research across multiple AI providers.  
 Get a **Truth Score**, confidence level, synthesized evidence, and sources with credibility signals — right in your browser! 🚀  
