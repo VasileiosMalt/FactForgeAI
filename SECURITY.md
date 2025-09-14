@@ -1,79 +1,52 @@
-# Security Policy — FactForge AI (Chrome Extension)
-
+# Privacy Policy — FactForge AI (Chrome Extension)
 Last updated: 2025-09-14
 
-Overview
-FactForge AI is a Chrome extension for AI‑assisted fact‑checking. It runs as a Manifest V3 extension with a background service worker, a content script UI overlay, a popup, and an optional Side Panel.
+Summary
+FactForge AI is an AI‑assisted fact‑checking extension. I do not collect, sell, or share personal data. The extension runs locally in your browser; network requests go directly to the services you choose (AI provider and DuckDuckGo) to perform analysis.
 
-Supported Versions
-- No Support provided
+Data We Process
+- User input: The text you analyze (typed or selected) is sent only to your chosen AI provider and to DuckDuckGo for search queries.
+- Page access: A content script injects UI to display results. It does not transmit page content unless you explicitly submit text for analysis.
+- API keys: Stored only in Chrome Sync (scoped to your Google account). Not sent to the developer.
+- History & stats: Stored only on your device via Chrome storage (local). You can clear them anytime in the extension.
 
-Threat Model and Attack Surface
-- Primary surfaces:
-  - Content script UI injected into web pages (content.js + content.css)
-  - Background service worker (background.js) fetching from search/credibility sites and AI APIs
-  - Options/popup/side panel pages (options.html, popup.html)
-- No remote code execution: the extension does not load or execute code from the network. It only fetches data (search results, page excerpts, AI responses).
-- No eval/Function/new Function, no inline event listeners created by extension code.
+What We Do Not Do
+- No telemetry or analytics.
+- No selling or sharing of data with data brokers or advertisers.
+- No remote code execution; the extension does not load or execute code from the network (only data is fetched).
 
-Permissions and Why They’re Needed
-- activeTab, scripting, tabs: Inject overlay and communicate with the active tab on user action.
-- contextMenus: “Fact‑Check This” on selected text.
+Third‑Party Services
+When you use the extension, data necessary to perform analysis is sent directly from your browser to:
+- Search/credibility: DuckDuckGo (api.duckduckgo.com), Media Bias/Fact Check (mediabiasfactcheck.com), and selected news/fact‑check sites (e.g., reuters.com, apnews.com, bbc.com, npr.org, snopes.com, politifact.com, factcheck.org).
+- AI providers you select: GitHub Models (models.inference.ai.azure.com), OpenRouter, OpenAI, Groq, GLHF, Chutes, Hugging Face.
+These services have their own privacy policies and may process/store data per their terms. Your queries may be transferred outside your country depending on provider infrastructure.
+
+Permissions (Why They’re Needed)
+- activeTab, scripting, tabs: Inject the overlay and communicate with the current tab when you initiate actions.
+- contextMenus: “FactForge AI: Fact‑Check This” on selected text.
 - sidePanel: Show results in Chrome’s Side Panel.
-- storage: Save user settings/API keys (sync) and local history/stats (local).
-- downloads: Export a .txt report.
-- host_permissions: Fetch data from credibility/news sites (e.g., MBFC, Reuters, AP, Snopes, PolitiFact, FactCheck.org), DuckDuckGo, and AI providers (GitHub Models, OpenRouter, OpenAI, Groq, GLHF, Chutes, Hugging Face).
+- storage: Save settings, API keys (sync), local history/stats (local).
+- downloads: Export a .txt report on your request.
+- host_permissions: Fetch credibility data, search results, and contact AI provider APIs you select.
 
-Data Handling and Privacy
-- API keys: Stored only in chrome.storage.sync (Google account–scoped). Not transmitted to the developer or any third party except the relevant AI provider you select. Consider enabling a Chrome sync passphrase for E2E encryption.
-- User inputs and results: Sent only to the chosen AI provider and DuckDuckGo. History and stats are stored locally via chrome.storage.local.
-- No telemetry/analytics. No data sale or transfer.
-- Downloads: Reports are generated locally and saved via the Chrome downloads API.
+Storage & Retention
+- API keys: Chrome Sync only (optionally end‑to‑end encrypted if you enable a sync passphrase).
+- History/stats: Local only. Up to ~500 recent checks (and score history) for convenience. Clear anytime in Options.
+- We (the developer) do not receive or store your API keys, texts, or results on our servers.
 
-Network Endpoints (non-exhaustive)
-- Search/credibility: api.duckduckgo.com, mediabiasfactcheck.com, reuters.com, apnews.com, bbc.com, npr.org, snopes.com, politifact.com, factcheck.org
-- AI providers: models.inference.ai.azure.com (GitHub Models), openrouter.ai, api.openai.com, api.groq.com, glhf.chat, llm.chutes.ai, huggingface.co
+Children’s Privacy
+This extension is not directed to children and should be used by individuals able to review and accept provider terms.
 
-Secure Development Practices
-- Manifest V3 service worker model (no background pages)
-- No remote code execution, no dynamic code eval
-- Network requests restricted to declared host_permissions
-- Least-privilege messaging between popup/options/content/background
-- Best‑effort HTML text extraction from pages with tag stripping in background.js to avoid forwarding raw HTML
-- Packaged resources only; no CDN runtime scripts
+Your Controls
+- Clear data: Use the extension’s Options or History clear action to remove local history/stats.
+- API keys: Add/remove in Options. Keys are stored only in Chrome Sync.
+- Uninstall: Removes local data stored by the extension in your browser profile.
 
-Known Risks and Mitigations
-- Untrusted text in UI:
-  - Risk: AI responses and extracted snippets are user-/network-sourced. Some UI is assembled with innerHTML in content.js.
-  - Mitigations (current): Many fetched page excerpts are stripped to text in background.js (fetchPageContent removes tags).
-- Content script scope:
-  - Risk: content script is registered on <all_urls> to enable overlay quickly.
-  - Improvements (planned): Restrict automatic injection; prefer programmatic injection (chrome.scripting) on user gesture; consider declarativeContent rules to limit matches.
-- Host permissions breadth:
-  - Risk: Multiple news/credibility/AI domains are permitted.
-  - Mitigations (current): Only data requests are performed; no code is executed from these hosts.
-- Third‑party service retention:
-  - Note: AI providers and DuckDuckGo may retain queries/logs per their policies. Users should review provider terms.
+Security
+- Manifest V3 service worker; no remote code execution.
+- Network requests over HTTPS to declared host domains only.
+- Best‑effort sanitization of fetched text before UI rendering; ongoing hardening to minimize injection risks.
+- Recommend enabling a Chrome Sync passphrase to further protect API keys.
 
-Supply Chain
-- No runtime npm dependencies for the extension codebase.
-- All executable code is bundled within the extension package.
-
-Hardening Recommendations for Users
-- Keep the extension updated.
-- Enable a Chrome sync passphrase to protect API keys in chrome.storage.sync.
-- Use provider accounts with appropriate rate limits and access controls.
-- Review and clear local history in Options when needed.
-
-Reporting a Vulnerability
-- Please use GitHub Security Advisories (Security tab → “Report a vulnerability”) for private disclosure.
-- Include:
-  - Affected version/commit
-  - Reproduction steps, PoC, and impact
-  - Suggested remediation if available
-- We aim to acknowledge within 2 business days and provide a remediation timeline after triage.
-- Coordinated Disclosure: We prefer coordinated disclosure and will credit reporters upon request after a fix is released.
-
-Change Log for Security-Relevant Updates
-- v2.0: MV3 service worker; expanded provider support; improved tag stripping for fetched page excerpts; no telemetry.
-- Planned: Full sanitization/escaping in content UI; narrower content script scope; configurable host permissions.
+Changes to This Policy
+I may update this policy. Material changes will be reflected by updating the “Last updated” date and changelog in the repository.
