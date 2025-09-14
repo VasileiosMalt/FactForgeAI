@@ -1,4 +1,4 @@
-# Privacy Policy — FactForge AI (Chrome Extension)
+# Privacy Policy for FactForge AI (Chrome Extension)
 Last updated: 2025-09-14
 
 Summary
