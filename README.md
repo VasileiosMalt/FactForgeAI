@@ -8,8 +8,7 @@
 Get a **Truth Score**, confidence level, synthesized evidence, and sources with credibility signals right in your browser! 🚀  
 
 **Version:** 2.0.0  
-- 🌐 Chrome Web Store:  
-- 📚 Documentation:  
+- 🌐 Chrome Web Store:  Pending Review
 
 ---
 
